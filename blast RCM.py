@@ -26,7 +26,7 @@ sys.stdout = blast_output
 left = [line.rstrip('\n') for line in open('left_introns.fa', 'r')]
 right = [line.rstrip('\n') for line in open('right_introns.fa', 'r')]
 
-arrayofstats = [["Pair number", "Alignments count", "Average length of alignments", "Counts over 20bp size", "Avg size of counts over 20bp size", "Percentage alignment", "Avg bit score", "Total matches"]]
+arrayofstats = [["Pair number", "# of matches over 20 bit score", "Avg length of matches over 20 bit score", "# of matches over 20bp size and over 20 bit score", "Avg size of counts over 20bp size and over 20 bit score", "Avg percentage alignment of matches over 20 bit score", "Avg bit score for all matches", "Total matches (unfiltered)"]]
 
 # Create two sequence files'''len(left)'''
 for i in range(len(left)):
@@ -68,7 +68,7 @@ for i in range(len(left)):
                 average_bits += hsp.bits
 
             # Filter for bit score >20 for the rest of the stats
-            if (hsp.bits<20):
+            if (hsp.bits < 20):
                 continue
 
             # Find out if there is any seq that is not an RCM or SM
