@@ -6,7 +6,7 @@ from Bio import SeqIO
 
 import io
 import sys
-from Useful import reverse, remove_dashes, complement
+from useful import reverse, remove_dashes, complement
 import csv
 
 # Input and output code
@@ -26,7 +26,7 @@ sys.stdout = blast_output
 left = [line.rstrip('\n') for line in open('left_introns.fa', 'r')]
 right = [line.rstrip('\n') for line in open('right_introns.fa', 'r')]
 
-arrayofstats = [["Pair number", "Alignments count", "Average length of alignments", "Counts over 20bp size", "Avg size of counts over 20bp size", "Percentage alignment", "Avg bit score", "Total matches"]]
+arrayofstats = [["Pair number", "# of matches over 20 bit score", "Avg length of matches over 20 bit score", "# of matches over 20bp size and over 20 bit score", "Avg size of counts over 20bp size and over 20 bit score", "Avg percentage alignment of matches over 20 bit score", "Avg bit score for all matches", "Total matches (unfiltered)"]]
 
 # Create two sequence files'''len(left)'''
 for i in range(len(left)):
@@ -35,6 +35,7 @@ for i in range(len(left)):
 
     left[i]=left[i].upper()
     right[i]=right[i].upper()
+    print("*************************************************************")
 
     seq1 = SeqRecord(Seq(left[i]), id="seq"+str((i+1)/2))
     seq2 = SeqRecord(Seq(right[i]).reverse_complement(), id="seq"+str((i+1)/2))
@@ -68,7 +69,7 @@ for i in range(len(left)):
                 average_bits += hsp.bits
 
             # Filter for bit score >20 for the rest of the stats
-            if (hsp.bits<20):
+            if (hsp.bits < 20):
                 continue
 
             # Find out if there is any seq that is not an RCM or SM
@@ -85,11 +86,10 @@ for i in range(len(left)):
             if (len(hsp.query)>=20):
                 count_aligns_20 += 1
                 average_length_20 += len(hsp.query)
-            pct_aligns += (hsp.match.count('|')/len(hsp.query))
+            pct_aligns += (hsp.match.count('|')/len(hsp.query)*100)
 
             # Print each match
-            print("*************************************************************")
-            print("**** Flanking seqs alignment no. ", count_aligns+1, " for circ no. ", (i+1)/2, " *****")
+            print("Flanking seqs alignment no. ", count_aligns+1, " for ", left[i-1].replace('>','').split("::", 1)[0], " *****")
             #print('sequence:', alignment.title)
             #print('length:', alignment.length)
             print('e value:', hsp.expect)
@@ -99,7 +99,7 @@ for i in range(len(left)):
             print(complement(hsp.sbjct), " blast subject")
             print()
             print("Subject reverse ", Seq(remove_dashes(hsp.sbjct)).reverse_complement())
-            print("% alignment:", hsp.match.count('|')/len(hsp.query), "\n")
+            print("% alignment:", round(hsp.match.count('|')/len(hsp.query)*100,2), "\n")
             print("*************************************************************")
 
     # Divide sums to get averages of all stats and echo
@@ -110,7 +110,7 @@ for i in range(len(left)):
     if count_aligns > 0:
 
         average_length = average_length/count_aligns
-        pct_aligns = pct_aligns/count_aligns
+        pct_aligns = round(pct_aligns/count_aligns, 2)
         print("")
         if count_aligns_20 > 0:
             average_length_20 = average_length_20/count_aligns_20
@@ -122,24 +122,24 @@ for i in range(len(left)):
         print("Average percentage alignment of all alignments: ", pct_aligns)
         print("")
         print("")
-        print("Circ no. ", (i+1)/2)
+        print(left[i-1].replace('>','').split("::", 1)[0])
         print("")
-        print("Left sequence, sense, ", left[i-1])
+        print("Left intron, sense, ", left[i-1].split("::", 1)[1])
         print("")
         print("5' ", left[i], " 3'")
         print("")
-        print("Right sequence, sense, ", right[i-1])
+        print("Right intron, sense, ", right[i-1].split("::", 1)[1])
         print("")
         print("5' ", right[i], " 3'")
         print("")
     else:
         print("*************************************************************")
-        print("No alignments for circ no.", (i+1)/2)
+        print("No alignments for ", left[i-1].replace('>','').split("::", 1)[0])
     print("Errors: ", errors)
     print("*************************************************************")
     for j in range(25):
         print()
-    arrayofstats.append([(i+1)/2, count_aligns, average_length, count_aligns_20, average_length_20, pct_aligns*100, average_bits, all_match_counts])
+    arrayofstats.append([(i+1)/2, count_aligns, average_length, count_aligns_20, average_length_20, pct_aligns, average_bits, all_match_counts])
 
 sys.stdout = orig_stdout
 
