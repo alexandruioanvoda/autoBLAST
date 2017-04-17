@@ -1,7 +1,7 @@
 # autoBLAST
 A set of Python and Bash scripts for automated BLAST of flanking sequence pairs of genomic intervals.
 
-###TUTORIAL
+### TUTORIAL
 
 Open bash, navigate to the folder where you downloaded the scripts and run this command:
 
