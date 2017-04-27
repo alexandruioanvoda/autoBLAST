@@ -14,7 +14,7 @@ chmod +x intron_picker.sh
 Two possible inputs: either for whole-introns (see IntronPicker @ https://github.com/alexandruioanvoda/IntronPicker) or fixed intervals flanking the splice sites (included in these scripts).
 
 #### 1. Whole introns:
-Paste the upstream_introns.bed & downstream_introns.bed files into autoBLAST
+If you identified flanking intron intervals by using IntronPicker, paste the output (both upstream_introns.bed & downstream_introns.bed) files into the autoBLAST folder
 
 ### To run
 
