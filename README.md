@@ -1,7 +1,22 @@
 # autoBLAST
 A set of Python and Bash scripts for automated BLAST of flanking sequence pairs of genomic intervals.
 
-### TUTORIAL
+### Installation
+
+```
+git clone https://github.com/alexandruioanvoda/autoBLAST
+cd ./autoBLAST
+chmod +x intron_picker.sh
+```
+
+### Input
+
+Two possible inputs: either for whole-introns (see IntronPicker @ https://github.com/alexandruioanvoda/IntronPicker) or fixed intervals flanking the splice sites (included in these scripts).
+
+#### 1. Whole introns:
+Paste the upstream_introns.bed & downstream_introns.bed files into autoBLAST
+
+### To run
 
 Open bash, navigate to the folder where you downloaded the scripts and run this command:
 
