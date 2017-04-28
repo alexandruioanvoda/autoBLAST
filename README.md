@@ -9,6 +9,7 @@ cd ./autoBLAST
 chmod +x whole_intron_fasta.sh intron_fasta_window.sh master_script.sh blast\ RCM.py distance_analysis.py
 ```
 The installation and runs were tested on OS X Yosemite and Ubuntu 16.10. Both computers had the following dependencies installed: `Python 3.5.2, biopython 1.69, bedtools v2.26.0, Mac bash-3.2 or GNU bash 4.3`
+For any issues running scripts in this repository, please email us at `avoda@nevada.unr.edu`
 
 
 ## Input
