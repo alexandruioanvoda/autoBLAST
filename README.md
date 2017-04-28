@@ -2,13 +2,13 @@
 A set of Python and Bash scripts for automated BLAST of flanking sequence pairs of genomic intervals.
 
 ### Installation
-
+To install autoBLAST, run this in the terminal:
 ```
 git clone https://github.com/alexandruioanvoda/autoBLAST
 cd ./autoBLAST
 chmod +x whole_intron_fasta.sh intron_fasta_window.sh master_script.sh blast\ RCM.py distance_analysis.py
 ```
-
+The installation and test runs were tested on OS X Yosemite and Ubuntu 16.10. Both computers had the following dependencies installed: `Python 3.5.2, biopython 1.69, bedtools v2.26.0, Mac bash-3.2 or GNU bash 4.3`
 
 
 ### Input
