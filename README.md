@@ -1,7 +1,7 @@
 # autoBLAST
-A set of Python and Bash scripts for automated BLAST of flanking sequence pairs of genomic intervals.
+A set of Python and Bash scripts for automated BLAST analysis of the flanking sequences of circular RNAs.
 
-### Installation
+## Installation
 To install autoBLAST, run this in the terminal:
 ```
 git clone https://github.com/alexandruioanvoda/autoBLAST
@@ -11,7 +11,7 @@ chmod +x whole_intron_fasta.sh intron_fasta_window.sh master_script.sh blast\ RC
 The installation and runs were tested on OS X Yosemite and Ubuntu 16.10. Both computers had the following dependencies installed: `Python 3.5.2, biopython 1.69, bedtools v2.26.0, Mac bash-3.2 or GNU bash 4.3`
 
 
-### Input
+## Input
 
 Two possible inputs: either for whole-introns (see IntronPicker @ https://github.com/alexandruioanvoda/IntronPicker) or fixed intervals flanking the splice sites (included in these scripts).
 
@@ -21,7 +21,7 @@ If you identified flanking intron intervals by using IntronPicker, paste the out
 autoBLAST can run without the linked intron intervals
 
 
-### Running the analysis
+## Running the analysis
 
 #### Testing that it works
 Open bash, navigate to the folder where you downloaded the scripts and run this command:
