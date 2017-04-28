@@ -13,7 +13,7 @@ dd=$8
 cp $bed input.bed
 if [ $1 == "0" ]; then
   #whole intron
-  ./whole_intron_fasta.sh u.bed d.bed $genome
+  ./whole_intron_fasta.sh upstream_introns.bed downstream_introns.bed $genome
 elif [ $1 == "1" ]; then
   #windows
   chmod +x intron_fasta_window.sh
