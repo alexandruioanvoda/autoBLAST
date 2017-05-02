@@ -19,7 +19,8 @@ Two possible inputs: either for whole-introns (see IntronPicker @ https://github
 ##### 1. Whole introns:
 If you identified flanking intron intervals by using IntronPicker, paste its output (both `upstream_introns.bed` & `downstream_introns.bed`) files into the autoBLAST folder
 ##### 2. Fixed window size:
-autoBLAST can run without the linked intron intervals
+autoBLAST can run without the linked intron intervals, just specify the window intervals (in LL, LD, DL, DD, as in the diagram underneath) when running autoBLAST.
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/YkXMn"><a href="//imgur.com/YkXMn"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 
 ## Running the analysis
