@@ -17,7 +17,7 @@ For any issues running scripts in this repository, please email us at `avoda@nev
 Two possible inputs: either for whole-introns (see IntronPicker @ https://github.com/alexandruioanvoda/IntronPicker) or fixed intervals flanking the splice sites (included in these scripts).
 
 ##### 1. Whole introns:
-If you identified flanking intron intervals by using IntronPicker, paste the output (both upstream_introns.bed & downstream_introns.bed) files into the autoBLAST folder
+If you identified flanking intron intervals by using IntronPicker, paste its output (both `upstream_introns.bed` & `downstream_introns.bed`) files into the autoBLAST folder
 ##### 2. Fixed window size:
 autoBLAST can run without the linked intron intervals
 
